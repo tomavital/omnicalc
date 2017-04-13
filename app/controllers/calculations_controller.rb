@@ -19,8 +19,20 @@ class CalculationsController < ApplicationController
 
     @character_count_without_spaces = @text.gsub(" ","").length
 
-    @occurrences = "Replace this string with your answer."
+    text_split_no_punctuation = @text.gsub(",","").gsub(".","").split
+    w_count = 0
+    text_split_no_punctuation.each do |word|
+      if word.downcase == @special_word.downcase
+        w_count = w_count + 1
+      end
+    end
+    @occurrences = w_count
+    #  text_split_into_array.count("@special_word")
+    # 1. split into an array of words
 
+
+    # 2. compare each member of the array to the special words
+    # 3. if == speaical word, @occurences +=1
     # ================================================================================
     # Your code goes above.
     # ================================================================================
