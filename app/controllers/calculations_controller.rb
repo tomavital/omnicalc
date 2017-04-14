@@ -114,13 +114,14 @@ class CalculationsController < ApplicationController
     last = @numbers.length-1
     @range = @sorted_numbers[last] - @sorted_numbers[0]
 
-    @median = @numbers.length
 
-    @sum = "Replace this string with your answer."
+    # @median = @numbers.length
 
-    @mean = "Replace this string with your answer."
+    @sum = @numbers.sum
 
-    @variance = "Replace this string with your answer."
+    @mean = @sum/@numbers.length
+
+    @variance = @numbers.variance
 
     @standard_deviation = "Replace this string with your answer."
 
