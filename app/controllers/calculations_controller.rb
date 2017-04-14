@@ -139,7 +139,28 @@ class CalculationsController < ApplicationController
     @standard_deviation = @variance **0.5
 
 
-    @mode = "Replace this string with your answer."
+    squared_numbers = []
+    @numbers.each do |num|
+      square = (num - @mean) * (num - @mean)
+      squared_numbers.push(square)
+    end
+    sum = squared_numbers.sum
+
+    mode = []
+    counter = Hash.new(0)
+
+    @numbers.sort.each do |i|
+      counter[i] += 1
+    end
+
+    mode_array = []
+
+    counter.each do |k, v|
+      if v == counter.values.max
+        mode_array << k
+      end
+    end
+    @mode = mode_array.sum/mode_array.length
 
     # ================================================================================
     # Your code goes above.
