@@ -127,16 +127,18 @@ class CalculationsController < ApplicationController
     @sum = @numbers.sum
 
     @mean = @sum/@numbers.length
-  squared_numbers = []
-  @numbers.each do |num|
-     square = (num - @mean) * (num - @mean)
-     squared_numbers.push(square)
-   end
-sum = squared_numbers.sum
+    squared_numbers = []
+    @numbers.each do |num|
+      square = (num - @mean) * (num - @mean)
+      squared_numbers.push(square)
+    end
+    sum = squared_numbers.sum
     @variance = sum/@numbers.length
     # actually a mistake in the target, should be -1
 
     @standard_deviation = @variance **0.5
+
+    
     @mode = "Replace this string with your answer."
 
     # ================================================================================
