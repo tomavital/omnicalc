@@ -114,14 +114,21 @@ class CalculationsController < ApplicationController
     last = @numbers.length-1
     @range = @sorted_numbers[last] - @sorted_numbers[0]
 
-
-    # @median = @numbers.length
+    a_order = @numbers.sort
+    length1 = (@numbers.length - 1) / 2
+    if @numbers.length%2 == 1
+      median = a_order[length1]
+    else
+      length2 = length1 + 1
+      median = (a_order[length1] + a_order[length2]) / 2
+    end
+    @median = median
 
     @sum = @numbers.sum
 
     @mean = @sum/@numbers.length
 
-    @variance = @numbers.variance
+    # @variance = @numbers.variance
 
     @standard_deviation = "Replace this string with your answer."
 
