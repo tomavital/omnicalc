@@ -52,12 +52,14 @@ class CalculationsController < ApplicationController
     # The principal value the user input is in the decimal @principal.
     # ================================================================================
 
-a= @apr/100*@principal
-b= 0-@years
-c= (1+@apr/100) ** -b
-d= 1-c
-e=a/d
-    @monthly_payment = e/12
+    r= (@apr/12)/100
+    pr= @principal
+    n= @years*12
+    a=(1+r)**n
+    b=pr*r
+    c=b*a/a-1
+
+    @monthly_payment = c
 
     # ================================================================================
     # Your code goes above.
@@ -79,12 +81,12 @@ e=a/d
     #   number of seconds as a result.
     # ================================================================================
 
-    @seconds = "Replace this string with your answer."
-    @minutes = "Replace this string with your answer."
-    @hours = "Replace this string with your answer."
-    @days = "Replace this string with your answer."
-    @weeks = "Replace this string with your answer."
-    @years = "Replace this string with your answer."
+    @seconds = @starting-@ending
+    @minutes = (@starting-@ending)/60
+    @hours = (@starting-@ending)/3600
+    @days = (@starting-@ending)/86400
+    @weeks = (@starting-@ending)/604800
+    @years = (@starting-@ending)/31536000
 
     # ================================================================================
     # Your code goes above.
