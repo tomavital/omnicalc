@@ -52,12 +52,12 @@ class CalculationsController < ApplicationController
     # The principal value the user input is in the decimal @principal.
     # ================================================================================
 
-    r= (@apr/12)/100
+    r= (@apr/100)/12
     pr= @principal
     n= @years*12
-    a=(1+r)**n
+    a=(1+r)**(-n)
     b=pr*r
-    c=b*a/a-1
+    c=b/(1-a)
 
     @monthly_payment = c
 
@@ -138,7 +138,7 @@ class CalculationsController < ApplicationController
 
     @standard_deviation = @variance **0.5
 
-    
+
     @mode = "Replace this string with your answer."
 
     # ================================================================================
